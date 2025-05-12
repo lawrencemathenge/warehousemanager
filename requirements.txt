@@ -8,7 +8,7 @@ Flask==3.1.0
 Flask-Bcrypt==1.0.1
 flask-cors==5.0.1
 Flask-JWT==0.3.2
-Flask-JWT-Extended==4.7.1
+Flask-JWT-Extended>=new_version
 Flask-Migrate==4.1.0
 Flask-RESTful==0.3.10
 Flask-SQLAlchemy==3.1.1
