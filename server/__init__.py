@@ -16,9 +16,8 @@ def create_app():
 
     jwt.init_app(app)
     print("✅ App created, JWT initialized.")
-    
     CORS(app, supports_credentials=True, resources={
-    r"/api/*": {"origins": "https://warehousemanager-1.onrender.com"}
+    r"/api/*": {"origins": ["http://localhost:5173", "https://warehousemanager-1.onrender.com"]}
 })
 
     db.init_app(app)
