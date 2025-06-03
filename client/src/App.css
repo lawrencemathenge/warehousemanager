@@ -1,8 +1,55 @@
+/* Ensure html and body take up the full viewport */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424; /* This will be the background for the root element */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* The :root element itself should also span the full viewport */
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  /* These properties are now primarily for centering the content within the full screen */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  min-width: 320px; /* Keep a minimum width for very small screens */
+  /* min-height: 150vh; was here, but 100vh on html/body is more standard for full screen.
+     If you need content to extend beyond one screen height and scroll, remove align-items: center and let content flow. */
+  background-color: #f9f9f9; /* Light background for the whole page (overrides :root background if body is larger) */
+  color: #333; /* Text color for the body */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 #root {
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 0 auto; /* This will still center #root within the body's flex container */
   padding: 2rem;
   text-align: center;
+  width: 100%; /* Ensure #root takes full available width up to max-width */
+  box-sizing: border-box; /* Include padding in the width calculation */
 }
 
 .logo {
@@ -57,17 +104,6 @@
 
 .read-the-docs:hover {
   opacity: 1; /* Restore opacity on hover */
-}
-
-/* Added global styles for better consistency */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  line-height: 1.5;
-  color: #333;
-  background-color: #f9f9f9; /* Light background for the whole page */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -174,3 +210,15 @@ label {
   font-size: 0.9rem;
 }
 
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
